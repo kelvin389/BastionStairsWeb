@@ -1,6 +1,6 @@
 # BastionStairsWeb
 
-Full source code for my stairs game hosted at [https://kelvvin.com/stairs](kelvvin.com)
+Full source code for my stairs game hosted at [kelvvin.com](https://kelvvin.com/stairs)
 
 ## Setup
 Clone the repository and install project dependencies:
