@@ -410,8 +410,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         // creates the illusion that the background is continuous and infinite.
         // for loop ranges from -1 to (# tiles required + 1) to draw extra tiles in each direction
         // to help with this illusion
-        const BackgroundImage = {width: backgroundImage.naturalWidth, height:backgroundImage.naturalHeight} // normally this project uses astro's image import to read the file metadata but this is added because that is removed from this standalone version of the game
-        for (let i = -1; i < canvasWidth / BackgroundImage.width + 1; i++) {
+        const BackgroundImage = {width: backgroundImage.naturalWidth, height:backgroundImage.naturalHeight} // normally this project uses astro's image import to read the file metadata but this is 
+        for (let i = -1; i < canvasWidth / BackgroundImage.width + 1; i++) {                                // added as a bandaid because that is removed from this standalone version of the game
         for (let j = -1; j < canvasHeight / BackgroundImage.height + 1; j++) {
             ctx.drawImage(
             backgroundImage,
