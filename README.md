@@ -17,3 +17,5 @@ This script will bundle `config/gameConfig.ts` and `game.ts` together and build 
 ## Play
 
 Open `game.html` in a browser
+
+![demo](demo.gif)
