@@ -22,15 +22,15 @@
     maxStaminaDrainPlatform,
     hardmodeMaxStaminaDrainPlatform,
     initFallSpeed,
-    fallSpeedAccel
+    fallSpeedAccel,
   };
 
   // game.ts
   document.addEventListener("DOMContentLoaded", async () => {
     let Direction;
     ((Direction2) => {
-      Direction2[Direction2["Left"] = 0] = "Left";
-      Direction2[Direction2["Right"] = 1] = "Right";
+      Direction2[(Direction2["Left"] = 0)] = "Left";
+      Direction2[(Direction2["Right"] = 1)] = "Right";
     })(Direction || (Direction = {}));
     const screen = document.getElementById("screen");
     const ctx = screen.getContext("2d");
@@ -39,10 +39,7 @@
     playerImage.src = "./assets/spaceman.png";
     const backgroundImage = new Image();
     backgroundImage.src = "./assets/background.png";
-    await Promise.all([
-      playerImage.decode(),
-      backgroundImage.decode()
-    ]);
+    await Promise.all([playerImage.decode(), backgroundImage.decode()]);
     const canvasMaxWidth = 1e3;
     const canvasMaxHeight = 800;
     let canvasWidth = 0;
@@ -83,10 +80,10 @@
     }
     let Difficulty;
     ((Difficulty2) => {
-      Difficulty2[Difficulty2["normal"] = 0] = "normal";
-      Difficulty2[Difficulty2["hard"] = 1] = "hard";
+      Difficulty2[(Difficulty2["normal"] = 0)] = "normal";
+      Difficulty2[(Difficulty2["hard"] = 1)] = "hard";
     })(Difficulty || (Difficulty = {}));
-    let difficulty = 0 /* normal */;
+    let difficulty = 0; /* normal */
     let highScore = 0;
     if (localStorage.getItem("highScore") != null) {
       highScore = parseInt(localStorage.getItem("highScore"));
@@ -110,12 +107,12 @@
     let playerPos = { ...initPlayerPos };
     const initCameraPos = {
       x: playerPos.x + cameraOffsetFromPlayer.x,
-      y: playerPos.y + cameraOffsetFromPlayer.y
+      y: playerPos.y + cameraOffsetFromPlayer.y,
     };
     let cameraPos = { ...initCameraPos };
     const initCurPlatform = -1;
     let curPlatform = initCurPlatform;
-    const initDirection = 1 /* Right */;
+    const initDirection = 1; /* Right */
     let curDirection = initDirection;
     let platforms = [];
     let nextPlatformX = 0;
@@ -157,10 +154,10 @@
     function moveBackward() {
       if (curDirection === 0 /* Left */) {
         moveRight();
-        curDirection = 1 /* Right */;
+        curDirection = 1; /* Right */
       } else {
         moveLeft();
-        curDirection = 0 /* Left */;
+        curDirection = 0; /* Left */
       }
       step();
     }
@@ -174,7 +171,7 @@
     }
     let storedForwardKey = localStorage.getItem("forwardKey");
     let storedBackwardKey = localStorage.getItem("backwardKey");
-    document.addEventListener("keydown", function(event) {
+    document.addEventListener("keydown", function (event) {
       if (pausedInputs) {
         return;
       }
@@ -258,7 +255,7 @@
     const hardmodeToggle = document.getElementById("hardmodeToggle");
     hardmodeToggle.addEventListener("change", () => {
       if (hardmodeToggle.checked) {
-        difficulty = 1 /* hard */;
+        difficulty = 1; /* hard */
         if (localStorage.getItem("hardHighScore") != null) {
           highScore = parseInt(localStorage.getItem("hardHighScore"));
         } else {
@@ -266,7 +263,7 @@
         }
         localStorage.setItem("hardmode", "true");
       } else {
-        difficulty = 0 /* normal */;
+        difficulty = 0; /* normal */
         if (localStorage.getItem("highScore") != null) {
           highScore = parseInt(localStorage.getItem("highScore"));
         } else {
@@ -278,7 +275,7 @@
     });
     if (localStorage.getItem("hardmode") === "true") {
       hardmodeToggle.checked = true;
-      difficulty = 1 /* hard */;
+      difficulty = 1; /* hard */
       if (localStorage.getItem("hardHighScore") != null) {
         highScore = parseInt(localStorage.getItem("hardHighScore"));
       } else {
@@ -287,13 +284,16 @@
     }
     function draw(ctx2) {
       ctx2.clearRect(0, 0, ctx2.canvas.width, ctx2.canvas.height);
-      const BackgroundImage = { width: backgroundImage.naturalWidth, height: backgroundImage.naturalHeight };
+      const BackgroundImage = {
+        width: backgroundImage.naturalWidth,
+        height: backgroundImage.naturalHeight,
+      };
       for (let i = -1; i < canvasWidth / BackgroundImage.width + 1; i++) {
         for (let j = -1; j < canvasHeight / BackgroundImage.height + 1; j++) {
           ctx2.drawImage(
             backgroundImage,
-            Math.round(i * BackgroundImage.width - cameraPos.x % BackgroundImage.width),
-            Math.round(j * BackgroundImage.height + cameraPos.y % BackgroundImage.height),
+            Math.round(i * BackgroundImage.width - (cameraPos.x % BackgroundImage.width)),
+            Math.round(j * BackgroundImage.height + (cameraPos.y % BackgroundImage.height)),
             BackgroundImage.width,
             BackgroundImage.height
           );
@@ -309,7 +309,12 @@
       }
       for (let i = 0; i < platforms.length; i++) {
         const canvasCoords = gameToCanvas(platforms[i], cameraPos, platformWidth, platformHeight);
-        if (canvasCoords.x > -platformWidth && canvasCoords.x < canvasWidth + platformWidth && canvasCoords.y > -platformHeight && canvasCoords.y < canvasHeight + platformHeight) {
+        if (
+          canvasCoords.x > -platformWidth &&
+          canvasCoords.x < canvasWidth + platformWidth &&
+          canvasCoords.y > -platformHeight &&
+          canvasCoords.y < canvasHeight + platformHeight
+        ) {
           if (curPlatform === i) {
             const platformGrad = ctx2.createLinearGradient(
               canvasCoords.x + platformWidth / 2,
@@ -380,7 +385,7 @@
       ctx2.fillRect(
         staminaX - outlineSize,
         staminaY - outlineSize,
-        curStamina / gameConfig_default.maxStamina * staminaWidth + outlineSize * 2,
+        (curStamina / gameConfig_default.maxStamina) * staminaWidth + outlineSize * 2,
         staminaHeight + outlineSize * 2
       );
       const staminaGrad = ctx2.createLinearGradient(
@@ -395,7 +400,7 @@
       ctx2.fillRect(
         staminaX,
         staminaY,
-        curStamina / gameConfig_default.maxStamina * staminaWidth,
+        (curStamina / gameConfig_default.maxStamina) * staminaWidth,
         staminaHeight
       );
       const guidelineWidth = 3;
@@ -470,10 +475,19 @@
         endGame();
       } else {
         curPlatform += 1;
-        curStamina = Math.min(gameConfig_default.maxStamina, curStamina + gameConfig_default.staminaGain);
-        if (difficulty === 0 /* normal */ && curPlatform <= gameConfig_default.maxStaminaDrainPlatform) {
+        curStamina = Math.min(
+          gameConfig_default.maxStamina,
+          curStamina + gameConfig_default.staminaGain
+        );
+        if (
+          difficulty === 0 /* normal */ &&
+          curPlatform <= gameConfig_default.maxStaminaDrainPlatform
+        ) {
           curStaminaDrain += gameConfig_default.staminaDrainIncrement;
-        } else if (difficulty === 1 /* hard */ && curPlatform <= gameConfig_default.hardmodeMaxStaminaDrainPlatform) {
+        } else if (
+          difficulty === 1 /* hard */ &&
+          curPlatform <= gameConfig_default.hardmodeMaxStaminaDrainPlatform
+        ) {
           curStaminaDrain += gameConfig_default.hardmodeStaminaDrainIncrement;
         }
       }

@@ -1,80 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <title>stairs game</title>
-        <link rel="stylesheet" href="game.css">
-    </head>
+  <head>
+    <title>stairs game</title>
+    <link rel="stylesheet" href="game.css" />
+  </head>
 
-    <body>
+  <body>
+    <div class="flex flex-col-reverse items-center justify-center xl:flex-row">
+      <div class="bg-background mt-8 w-2/3 border p-2 xl:mr-12 xl:w-auto">
+        <!-- gameplay settings -->
+        <div>
+          Hard mode:
+          <input type="checkbox" id="hardmodeToggle" />
+        </div>
 
-        <div class="flex flex-col-reverse items-center justify-center xl:flex-row">
-        <div class="bg-background mt-8 w-2/3 border p-2 xl:mr-12 xl:w-auto">
-            <!-- gameplay settings -->
-            <div>
-            Hard mode:
-            <input type="checkbox" id="hardmodeToggle" />
-            </div>
+        <!-- controls -->
+        <div class="mt-4">
+          <b>Controls:</b>
+          <div>
+            Touchscreen controls:
+            <input type="checkbox" id="touchToggle" />
+          </div>
+          <div>
+            Backward Key: <input id="forwardKeyInput" type="text" size="12" class="text-center" />
+          </div>
+          <div>
+            Forward Key: <input id="backwardKeyInput" type="text" size="12" class="text-center" />
+          </div>
+          <button id="saveKeybindsButton" class="border px-2 py-1 select-none">Save</button>
+          <button id="resetKeybindsButton" class="border px-2 py-1 select-none">Reset</button>
+        </div>
 
-            <!-- controls -->
-            <div class="mt-4">
-            <b>Controls:</b>
-            <div>
-                Touchscreen controls:
-                <input type="checkbox" id="touchToggle" />
-            </div>
-            <div>
-                Backward Key: <input id="forwardKeyInput" type="text" size="12" class="text-center" />
-            </div>
-            <div>
-                Forward Key: <input id="backwardKeyInput" type="text" size="12" class="text-center" />
-            </div>
-            <button id="saveKeybindsButton" class="border px-2 py-1 select-none">Save</button>
-            <button id="resetKeybindsButton" class="border px-2 py-1 select-none">Reset</button>
-            </div>
+        <!-- credits -->
+        <div class="mt-4">
+          <b>Credits:</b>
+          <div>
+            Background image:
+            <a
+              href="https://opengameart.org/content/space-cartoony-tiled-texture"
+              class="link"
+              target="_blank"
+            >
+              alpharats
+            </a>
+          </div>
+          <div>
+            Spaceman image:
+            <a
+              href="https://op.gg/lol/summoners/search?q=tooconfucius&region=na"
+              class="link"
+              target="_blank"
+            >
+              tooconfucius
+            </a>
+          </div>
+          <div>Programming: me</div>
+        </div>
 
-            <!-- credits -->
-            <div class="mt-4">
-            <b>Credits:</b>
-            <div>
-                Background image:
-                <a
-                href="https://opengameart.org/content/space-cartoony-tiled-texture"
-                class="link"
-                target="_blank"
-                >
-                alpharats
-                </a>
-            </div>
-            <div>
-                Spaceman image:
-                <a
-                href="https://op.gg/lol/summoners/search?q=tooconfucius&region=na"
-                class="link"
-                target="_blank"
-                >
-                tooconfucius
-                </a>
-            </div>
-            <div>Programming: me</div>
-            </div>
-
-            <!-- about -->
-            <div class="mt-4">
-            <div class="w-full xl:w-48">
-                <b>What is this?</b>
-                <br /> A game lifted from <a href="https://kelvvin.com/stairs">my website, where you can see more info</a>
-            </div>
+        <!-- about -->
+        <div class="mt-4">
+          <div class="w-full xl:w-48">
+            <b>What is this?</b>
             <br />
-            <div class="w-full xl:w-48">
-                <b>How was this made?</b><br />Game is built with pure Typescript. No libraries or
-                components used
-            </div>
-            </div>
+            A game lifted from
+            <a href="https://kelvvin.com/stairs">my website, where you can see more info</a>
+          </div>
+          <br />
+          <div class="w-full xl:w-48">
+            <b>How was this made?</b><br />Game is built with pure Typescript. No libraries or
+            components used
+          </div>
         </div>
-        <canvas id="screen" class="border"></canvas>
-        </div>
+      </div>
+      <canvas id="screen" class="border"></canvas>
+    </div>
 
-        <!-- game script -->
-        <script src="game.js"></script>
-    </body>
+    <!-- game script -->
+    <script src="game.js"></script>
+  </body>
 </html>

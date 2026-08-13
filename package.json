@@ -1,9 +1,12 @@
 {
   "scripts": {
-    "build": "esbuild game.ts --bundle --outfile=game.js"
+    "build": "esbuild game.ts --bundle --outfile=game.js",
+    "format": "prettier --write .",
+    "fmt": "npm run format"
   },
   "devDependencies": {
     "esbuild": "^0.28.2",
+    "prettier": "^3.9.6",
     "typescript": "^7.0.2"
   }
 }
